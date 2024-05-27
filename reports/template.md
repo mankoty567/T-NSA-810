@@ -12,7 +12,11 @@
 
 **Vulnerability description**
 
-_List all vulnerabilities that open this vulnerability_
+_List all vulnerabilities or exploit patterns that you can use
+
+**How we found it**
+
+Explain here how you found the vulnerabilities (procedure/steps)
 
 ---
 
@@ -33,6 +37,12 @@ echo "Hello world"
 # Second action
 echo "Hello back !"
 ```
+
+# Recommendations
+
+1. First recommendation
+2. Second recommendation
+...
 
 ## Known issues
 
