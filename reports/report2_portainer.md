@@ -49,7 +49,7 @@ docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /va
 
 1. Get the admin access to portainer before re-creating a new instance. This will allow you to get all the existing configuration (especially for environment) in portainer. This could be done by changing the hash of the password of the user `soupeladmin` directly in the `portainer.db`, using any kind of program that allows you to read and modify BoltDB file, in our case `boltbrowser`.
 2. Use more secured password following ANSSI's recommandation.
-3. 
+3. Manage user access, give users proper permission.
 
 ...
 
