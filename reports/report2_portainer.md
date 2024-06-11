@@ -42,7 +42,7 @@ docker volume rm portainer_data
 docker volume create portainer_data
 
 # Launch portainer container
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
+docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts --http-enabled
 ```
 
 # Recommendations
@@ -50,6 +50,7 @@ docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /va
 1. Get the admin access to portainer before re-creating a new instance. This will allow you to get all the existing configuration (especially for environment) in portainer. This could be done by changing the hash of the password of the user `soupeladmin` directly in the `portainer.db`, using any kind of program that allows you to read and modify BoltDB file, in our case `boltbrowser`.
 2. Use more secured password following ANSSI's recommandation.
 3. Manage user access, give users proper permission.
+4. If possible, use HTTPS for portainer, by removing the `--http-enabled` flag and exposing port 9443 instead of 9000.
 
 ...
 
