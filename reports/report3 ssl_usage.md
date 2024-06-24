@@ -155,6 +155,8 @@ ports:
 # Recommendations
 
 1. If there is a need to use it on a production with domain name, don't forget to follow [theses steps](https://phoenixnap.com/kb/letsencrypt-docker) insteads.
+2. Remember to renew your certificates each time they will expire. Otherwise, your services will not communicate.
+3. Accord your CORS policies to use https and domain validation, and remove non securised http traffic.
 
 ## Known issues
 
