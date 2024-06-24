@@ -7,8 +7,6 @@ RUN yarn build
 
 FROM nginxinc/nginx-unprivileged:1.25-bookworm-perl AS app
 
-WORKDIR /app
-
 COPY --from=builder /app/build /usr/share/nginx/html
 
 USER nginx
