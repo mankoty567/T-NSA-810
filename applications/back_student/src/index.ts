@@ -1,14 +1,14 @@
 import * as bodyParser from 'body-parser';
-import * as cors from 'cors';
-import * as express from 'express';
-import * as helmet from 'helmet';
-import * as morgan from 'morgan';
+import cors from "cors";
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
 import 'reflect-metadata';
-import * as swaggerJSDoc from 'swagger-jsdoc';
+import swaggerJSDoc from 'swagger-jsdoc';
 import * as swaggerStats from 'swagger-stats';
 import * as swaggerUi from 'swagger-ui-express';
-import {createConnection} from 'typeorm';
-import routes from './routes';
+import { createConnection } from 'typeorm';
+import routes from "./routes";
 
 const options = {
   swaggerDefinition: {
@@ -20,7 +20,7 @@ const options = {
     },
   },
   // List of files to be processes. You can also set globs './routes/*.js'
-  apis: ['**/routes/auth.ts', '**/controller/Admin/*.ts'],
+  apis: ['**/routes/auth', '**/controller/Admin/*'],
 };
 
 const specs = swaggerJSDoc(options);
@@ -48,8 +48,11 @@ createConnection()
     // Set all routes from routes folder
     app.use('/', routes);
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-    app.listen(3000, async () => {
+    app.listen(3003, async () => {
       console.log('Server started on port 3000!');
     });
   })
-  .catch(e => console.log(e));
+  .catch(
+    e => console.log(e)
+
+  );
