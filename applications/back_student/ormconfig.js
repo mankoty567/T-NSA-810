@@ -1,25 +1,30 @@
-module.exports ={
+require('dotenv').config();
+const path = require('path');
+
+module.exports = {
    type: "mysql",
    host: process.env.DB_HOST,
    port: 3306,
-   username: "root",
-   password: "root",
-   database: "dev_db",
+   role: process.env.ROLE,
+   username: process.env.USE,
+   password: process.env.PASSWORD,
+   database: process.env.DB_NAME,
    synchronize: true,
    logging: false,
    migrationsRun: true,
-   "entities": [
+   entities: [
       "src/entity/**/*.ts"
    ],
-   "migrations": [
+   migrations: [
       "src/migration/**/*.ts"
    ],
-   "subscribers": [
+   subscribers: [
       "src/subscriber/**/*.ts"
    ],
-   "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+   cli: {
+      entitiesDir: "src/entity",
+      migrationsDir: "src/migration",
+      subscribersDir: "src/subscriber"
    }
 };
+
