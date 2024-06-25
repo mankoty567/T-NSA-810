@@ -1,7 +1,5 @@
 FROM mhart/alpine-node:11 AS builder
 
-EXPOSE 3000
-
 RUN mkdir -p /usr/src/app && apk update && apk upgrade
 
 RUN apk add --no-cache bash curl gnupg
@@ -46,7 +44,9 @@ RUN yarn install --ignore-scripts
 
 USER app
 
-RUN yarn migration:start
+EXPOSE 3000
+
+#RUN yarn migration:start
 
 #RUN yarn schema:sync 
 

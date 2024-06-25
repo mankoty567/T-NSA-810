@@ -31,7 +31,11 @@ createConnection()
 
     // Call midlewares
     const app = express();
-    app.use(cors());
+    app.use(cors({
+      origin: process.env.S_URL,
+      allowedHeaders: ['Content-Type'], 
+      credentials: true  
+    }));
     app.use(swaggerStats.getMiddleware({}));
     app.use(helmet());
     app.use(bodyParser.json());
@@ -48,7 +52,7 @@ createConnection()
     // Set all routes from routes folder
     app.use('/', routes);
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-    app.listen(3003, async () => {
+    app.listen(3000, async () => {
       console.log('Server started on port 3000!');
     });
   })
