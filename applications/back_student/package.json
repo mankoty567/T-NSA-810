@@ -50,9 +50,10 @@
     "typeorm": "0.2.20"
   },
   "scripts": {
+    "build":"tsc && node --trace-deprecation --experimental-modules ./build/index.js",
     "tsc": "tsc",
     "start": "set debug=* && ts-node-dev --respawn --inspect --transpileOnly ./index.ts",
-    "prod": "tsc && node --trace-deprecation --experimental-modules ./index.js",
+    "prod": "node --trace-deprecation --experimental-modules ./index.js",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
