@@ -67,7 +67,7 @@ var options = {
         },
     },
     // List of files to be processes. You can also set globs './routes/*.js'
-    apis: ['**/routes/auth.js', '**/controller/Admin/*.js'],
+    apis: ['**/routes/auth', '**/controller/Admin/*'],
 };
 var specs = swagger_jsdoc_1.default(options);
 // Connects to the Database -> then starts the express
@@ -76,7 +76,11 @@ typeorm_1.createConnection()
     // Create a new express application instance
     // Call midlewares
     var app = express_1.default();
-    app.use(cors_1.default());
+    app.use(cors_1.default({
+        origin: process.env.S_URL,
+        allowedHeaders: ['Content-Type'],
+        credentials: true
+    }));
     app.use(swaggerStats.getMiddleware({}));
     app.use(helmet_1.default());
     app.use(bodyParser.json());
@@ -89,7 +93,7 @@ typeorm_1.createConnection()
     // Set all routes from routes folder
     app.use('/', routes_1.default);
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-    app.listen(3004, function () { return __awaiter(_this, void 0, void 0, function () {
+    app.listen(3000, function () { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             console.log('Server started on port 3000!');
             return [2 /*return*/];
