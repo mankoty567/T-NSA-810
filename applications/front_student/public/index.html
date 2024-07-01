@@ -16,6 +16,14 @@
   </head>
   <body id="page-top">
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'http://localhost:3001' 'http://localhost:3000';
+      form-action 'http://localhost:3001' 'http://localhost:3000';
+      img-src 'self';
+      child-src 'none';
+      frame-ancestors 'http://localhost:3001' 'http://localhost:3000';"
+    />
     <div id="root"></div>
     <!--
       This HTML file is a template.
