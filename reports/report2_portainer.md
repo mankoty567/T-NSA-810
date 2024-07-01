@@ -51,6 +51,16 @@ docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /va
 2. Use more secured password following ANSSI's recommandation.
 3. Manage user access, give users proper permission.
 4. If possible, use HTTPS for portainer, by removing the `--http-enabled` flag and exposing port 9443 instead of 9000.
+5. In order to manage all docker container from one Portainer instance, launch Portainer Agent on each VM using the command below:
+```bash
+docker run -d \
+  -p 9001:9001 \
+  --name portainer_agent \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+  portainer/agent:2.19.5
+```
 
 ...
 
