@@ -1,16 +1,17 @@
 {
    "compilerOptions": {
       "lib": [
-         "es5",
-         "es6"
+         "dom",
+         "es5"
       ],
-      "target": "es5",
-      "module": "commonjs",
+      "target": "ES5",
+      "module": "CommonJS",
       "moduleResolution": "node",
       "outDir": "./build",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "sourceMap": true,
-      "strictPropertyInitialization": false
+      "sourceMap": false,
+      "strictPropertyInitialization": false,
+      "esModuleInterop": true
    }
 }

@@ -1,6 +1,7 @@
-import  {compareSync, hashSync} from 'bcryptjs';
-import {IsNotEmpty, Length} from 'class-validator';
+import * as bcrypt from 'bcryptjs';
+const { compareSync, hashSync } = bcrypt;
 import { Exclude } from 'class-transformer';
+import {IsNotEmpty, Length} from 'class-validator';
 import {
   Column,
   CreateDateColumn,
