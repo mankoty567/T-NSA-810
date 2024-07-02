@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
    type: "mysql",
    host: process.env.DB_HOST,
-   port: 3306,
+   port: 3002,
    role: process.env.ROLE,
    username: process.env.USE,
    password: process.env.PASSWORD,
