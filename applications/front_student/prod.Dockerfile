@@ -1,5 +1,8 @@
 FROM mhart/alpine-node:11 AS builder
 
+ARG API_URL="http://localhost:3000"
+ENV REACT_APP_API_URL=${API_URL}
+
 WORKDIR /app
 COPY . .
 RUN yarn install --ignore-scripts
