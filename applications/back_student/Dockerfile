@@ -20,9 +20,13 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
+RUN touch ./access.log && chmod 666 ./access.log
+
 COPY --from=builder /usr/src/app/build ../app
 
 COPY --from=builder  /usr/src/app/package.json ../app
+
+COPY ./src/.env /usr/src/app
 
 COPY ./src/migration/.env /usr/src/app/migration
 
@@ -43,8 +47,6 @@ RUN npm install -g --unsafe-perm ts-node typescript
 RUN yarn install --ignore-scripts 
 
 USER app
-
-EXPOSE 3000
 
 #RUN yarn migration:start
 
