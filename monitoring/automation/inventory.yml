@@ -1,0 +1,4 @@
+monitoring:
+  hosts:
+    monitoring:
+      ansible_host: vm4-810
