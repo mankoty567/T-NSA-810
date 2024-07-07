@@ -1,0 +1,6 @@
+  - name: Patch Monitoring Server
+    hosts:
+      monitoring
+    remote_user: admin
+    roles:
+      - fix_portainer

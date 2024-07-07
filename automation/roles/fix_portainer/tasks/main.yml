@@ -1,0 +1,29 @@
+- name: remove current version of portainer
+  docker_container:
+    name: portainer
+    state: absent
+
+- name: Remove old portainer data volume
+  docker_volume:
+    name: portainer_data
+    state: absent
+
+- name: Create new portainer data volume
+  docker_volume:
+    name: portainer_data
+    state: present
+
+- name: re-create portainer with new version
+  docker_container:
+    image: portainer/portainer-ce:lts
+    name: portainer
+    state: started
+    restart_policy: always
+    command: "--http-enabled"
+    detach: true
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainer_data:/data"
