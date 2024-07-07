@@ -1,0 +1,17 @@
+services:
+  telegraf:
+    image: telegraf:alpine
+    container_name: telegraf
+    restart: always
+    hostname: ${HOSTNAME}
+    volumes:
+      - "/:/hostfs:ro"
+      - "./telegraf.conf:/etc/telegraf/telegraf.conf"
+    environment:
+      INFLUX_TOKEN: "TO_BE_REPLACED"
+      HOST_ETC: /hostfs/etc
+      HOST_PROC: /hostfs/proc
+      HOST_SYS: /hostfs/sys
+      HOST_VAR: /hostfs/var
+      HOST_RUN: /hostfs/run
+      HOST_MOUNT_PREFIX: /hostfs
